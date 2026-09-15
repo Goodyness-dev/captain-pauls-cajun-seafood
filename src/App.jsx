@@ -1,6 +1,8 @@
 ﻿import React, { useState, useEffect } from 'react';
 import Navbar from './components/layout/Navbar';
 import Hero from './components/home/Hero';
+import FeatureShowcase from './components/home/FeatureShowcase';
+import BentoSpecSection from './components/home/BentoSpecSection';
 import ServicesSection from './components/home/ServicesSection';
 import AboutSection from './components/home/AboutSection';
 import AmenitiesSection from './components/home/AmenitiesSection';
@@ -25,16 +27,8 @@ export default function App() {
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
   const [adminUser, setAdminUser] = useState(null);
 
-  // Theme state
-  const [darkMode, setDarkMode] = useState(() => {
-    try {
-      const saved = localStorage.getItem('cajun_theme');
-      if (saved) return saved === 'dark';
-      return true; // Default to rich dark mode for vibrant seafood imagery
-    } catch {
-      return true;
-    }
-  });
+  // Dark Mode default true
+  const [darkMode, setDarkMode] = useState(true);
 
   // Check stored auth token on mount
   useEffect(() => {
@@ -52,26 +46,6 @@ export default function App() {
         });
     }
   }, []);
-
-  // Apply dark class to <html> and <body> immediately
-  useEffect(() => {
-    const root = document.documentElement;
-    if (darkMode || currentPage === 'admin') {
-      root.classList.add('dark');
-      document.body.classList.add('dark');
-      if (currentPage !== 'admin') {
-        localStorage.setItem('cajun_theme', 'dark');
-      }
-    } else {
-      root.classList.remove('dark');
-      document.body.classList.remove('dark');
-      localStorage.setItem('cajun_theme', 'light');
-    }
-  }, [darkMode, currentPage]);
-
-  const toggleDarkMode = () => {
-    setDarkMode(prev => !prev);
-  };
 
   // Sync with browser URL hash for routing
   useEffect(() => {
@@ -140,17 +114,17 @@ export default function App() {
   }
 
   return (
-    <div className={`min-h-screen ${darkMode ? 'bg-black text-white' : 'bg-white text-neutral-900'} flex flex-col font-sans transition-colors duration-200`}>
-      {/* Global Navbar with Dark Mode Toggle */}
+    <div className="min-h-screen bg-obsidian-950 text-white flex flex-col font-sans selection:bg-cajun-500 selection:text-white">
+      {/* Global Navbar */}
       <Navbar 
         onOpenWizard={() => handleOpenWizard()} 
         currentPage={currentPage}
         onNavigate={handleNavigate}
         darkMode={darkMode}
-        onToggleDarkMode={toggleDarkMode}
+        onToggleDarkMode={() => {}}
       />
 
-      {/* Main View: Landing Page OR All Services Page */}
+      {/* Main View */}
       <main className="flex-grow">
         {currentPage === 'services' ? (
           <AllServicesPage 
@@ -160,6 +134,8 @@ export default function App() {
         ) : (
           <>
             <Hero onOpenWizard={handleOpenWizard} />
+            <FeatureShowcase onOpenWizard={handleOpenWizard} />
+            <BentoSpecSection onOpenWizard={handleOpenWizard} />
             <ServicesSection 
               onOpenWizard={handleOpenWizard}
               onViewAllServices={() => handleNavigate('services')}
@@ -187,19 +163,19 @@ export default function App() {
       />
 
       {/* Sticky Mobile Bottom Bar */}
-      <div className={`fixed bottom-0 left-0 right-0 z-30 sm:hidden ${darkMode ? 'bg-black/95 border-neutral-800' : 'bg-white/95 border-neutral-200'} backdrop-blur-md border-t p-2.5 flex items-center gap-2.5 shadow-lg`}>
+      <div className="fixed bottom-0 left-0 right-0 z-30 sm:hidden bg-obsidian-950/95 border-t border-white/10 backdrop-blur-md p-2.5 flex items-center gap-2.5 shadow-2xl">
         <a
           href={`tel:${BUSINESS_INFO.phone.replace(/[^0-9]/g, '')}`}
-          className={`flex-1 py-3 px-3.5 rounded-2xl ${darkMode ? 'bg-neutral-900 text-white border-neutral-800' : 'bg-neutral-100 text-neutral-900 border-neutral-200'} font-extrabold text-sm flex items-center justify-center space-x-2 border active:scale-95 transition`}
+          className="flex-1 py-3 px-3.5 rounded-full bg-obsidian-800 text-white font-extrabold text-xs flex items-center justify-center space-x-1.5 border border-white/10 active:scale-95 transition"
         >
-          <Phone className="w-4 h-4 text-red-600" />
-          <span>Call Restaurant</span>
+          <Phone className="w-3.5 h-3.5 text-cajun-400" />
+          <span>Call Us</span>
         </a>
         <button
           onClick={() => handleOpenWizard()}
-          className="flex-1 py-3 px-3.5 rounded-2xl bg-gradient-to-r from-red-600 to-orange-600 text-white font-extrabold text-sm flex items-center justify-center space-x-2 shadow-sm active:scale-95 transition"
+          className="flex-1 py-3 px-3.5 rounded-full bg-gradient-to-r from-cajun-500 to-cajun-600 text-white font-black text-xs flex items-center justify-center space-x-1.5 shadow-lg shadow-cajun-500/30 active:scale-95 transition"
         >
-          <Flame className="w-4 h-4 text-amber-300" />
+          <Flame className="w-3.5 h-3.5 text-amber-300" />
           <span>Order Feast</span>
         </button>
       </div>

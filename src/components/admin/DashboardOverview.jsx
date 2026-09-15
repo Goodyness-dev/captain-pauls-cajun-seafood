@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { 
   ArrowUpRight, Plus, Clock, CheckCircle2, 
-  Wrench, Send, Truck, Bus, Calendar, 
-  Play, Pause, RotateCcw, ChevronRight, Phone, Mail, User, Flame
+  Send, Calendar, Play, Pause, RotateCcw, 
+  ChevronRight, Phone, Mail, User, Flame, UtensilsCrossed, Sparkles
 } from '../common/Icons';
 import { quotesApi } from '../../services/api';
 
@@ -11,8 +11,8 @@ export default function DashboardOverview({ onNavigateTab, onSelectQuote, onOpen
   const [stats, setStats] = useState({ total: 0, pending: 0, quoted: 0, completed: 0 });
   const [isLoading, setIsLoading] = useState(true);
 
-  // Shop Live Timer State (Like the Time Tracker widget in the reference)
-  const [timerSeconds, setTimerSeconds] = useState(5048); // 01:24:08 initial
+  // Kitchen Live Boil & Prep Timer
+  const [timerSeconds, setTimerSeconds] = useState(1320); // 22:00 boil time
   const [isTimerRunning, setIsTimerRunning] = useState(true);
 
   useEffect(() => {
@@ -62,26 +62,32 @@ export default function DashboardOverview({ onNavigateTab, onSelectQuote, onOpen
       {/* ------------------------------------------------------------- */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-black font-heading tracking-tight text-slate-900">
-            Dashboard
+          <div className="flex items-center space-x-2 mb-1">
+            <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-widest uppercase bg-cajun-500/10 text-cajun-400 border border-cajun-500/20">
+              <Flame className="w-3 h-3 text-cajun-500" />
+              <span>Live Kitchen & Bookings</span>
+            </span>
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-black font-heading tracking-tight text-white">
+            Captain's Dashboard
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">
-            Plan, prioritize, and manage customer repair orders with ease.
+          <p className="text-xs sm:text-sm text-neutral-400 font-medium mt-0.5">
+            Real-time seafood boil tickets, catering quotes, and table reservations.
           </p>
         </div>
 
         <div className="flex items-center space-x-2.5">
           <button
             onClick={onOpenNewOrder}
-            className="py-2.5 px-4 bg-red-600 hover:bg-red-700 text-white font-bold text-xs sm:text-sm rounded-xl transition shadow-md shadow-red-600/20 flex items-center space-x-2 active:scale-95 cursor-pointer"
+            className="py-2.5 px-4 bg-gradient-to-r from-cajun-500 to-cajun-600 hover:from-cajun-600 hover:to-cajun-700 text-white font-bold text-xs sm:text-sm rounded-xl transition shadow-lg shadow-cajun-500/25 flex items-center space-x-2 active:scale-95 cursor-pointer"
           >
             <Plus className="w-4 h-4" />
-            <span>+ Add Order</span>
+            <span>+ New Order / Table</span>
           </button>
 
           <button
             onClick={() => onNavigateTab('orders')}
-            className="py-2.5 px-4 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-bold text-xs sm:text-sm rounded-xl transition shadow-sm active:scale-95"
+            className="py-2.5 px-4 bg-[#14141b] hover:bg-[#1a1b24] text-neutral-200 border border-white/10 font-bold text-xs sm:text-sm rounded-xl transition shadow-sm active:scale-95 cursor-pointer"
           >
             All Orders Table
           </button>
@@ -89,16 +95,16 @@ export default function DashboardOverview({ onNavigateTab, onSelectQuote, onOpen
       </div>
 
       {/* ------------------------------------------------------------- */}
-      {/* 4 STAT CARDS (Card 1: Solid Red Hero, Cards 2-4: Clean White)  */}
+      {/* 4 STAT CARDS (Obsidian Dark Theme with Glowing Orange Ember) */}
       {/* ------------------------------------------------------------- */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {/* Card 1: Solid Shop Red Fill (Matches Donezo Hero Card) */}
+        {/* Card 1: Solid Hero Ember Card */}
         <div 
           onClick={() => onNavigateTab('orders')}
-          className="bg-gradient-to-br from-red-600 to-red-700 text-white rounded-3xl p-6 shadow-lg shadow-red-600/20 cursor-pointer transition hover:scale-[1.01] flex flex-col justify-between"
+          className="bg-gradient-to-br from-cajun-600 to-cajun-800 text-white rounded-3xl p-6 shadow-xl shadow-cajun-500/20 cursor-pointer transition hover:scale-[1.01] flex flex-col justify-between border border-cajun-400/30"
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-red-100">Total Repair Orders</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-cajun-100">Total Boil Inquiries</span>
             <div className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition">
               <ArrowUpRight className="w-4 h-4 text-white" />
             </div>
@@ -106,201 +112,201 @@ export default function DashboardOverview({ onNavigateTab, onSelectQuote, onOpen
           <div className="my-4">
             <div className="text-4xl font-black font-heading tracking-tight">{stats.total}</div>
           </div>
-          <div className="inline-flex items-center space-x-1.5 text-xs text-red-100 bg-white/15 px-2.5 py-1 rounded-full w-max font-medium">
-            <span>↑ 14%</span>
-            <span>increased from last month</span>
+          <div className="inline-flex items-center space-x-1.5 text-xs text-cajun-100 bg-black/25 px-2.5 py-1 rounded-full w-max font-medium backdrop-blur-xs">
+            <span>↑ 28%</span>
+            <span>growth this month</span>
           </div>
         </div>
 
-        {/* Card 2: Completed Repairs (White Card) */}
+        {/* Card 2: Completed / Served */}
         <div 
           onClick={() => onNavigateTab('orders')}
-          className="bg-white border border-slate-200/80 rounded-3xl p-6 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col justify-between"
+          className="bg-[#0f1015] border border-white/10 rounded-3xl p-6 shadow-md hover:border-cajun-500/30 transition cursor-pointer flex flex-col justify-between"
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Completed Jobs</span>
-            <div className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition">
-              <ArrowUpRight className="w-4 h-4 text-slate-700" />
+            <span className="text-xs font-bold uppercase tracking-wider text-neutral-400">Fulfilled & Served</span>
+            <div className="w-8 h-8 rounded-full border border-white/10 bg-white/5 flex items-center justify-center hover:bg-white/10 transition">
+              <ArrowUpRight className="w-4 h-4 text-neutral-300" />
             </div>
           </div>
           <div className="my-4">
-            <div className="text-4xl font-black font-heading text-slate-900">{stats.completed}</div>
+            <div className="text-4xl font-black font-heading text-white">{stats.completed}</div>
           </div>
-          <div className="inline-flex items-center space-x-1.5 text-xs text-emerald-700 bg-emerald-50 border border-emerald-100 px-2.5 py-1 rounded-full w-max font-medium">
+          <div className="inline-flex items-center space-x-1.5 text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full w-max font-medium">
             <span>✓ 100%</span>
-            <span>on-time customer pickup</span>
+            <span>guest satisfaction</span>
           </div>
         </div>
 
-        {/* Card 3: Quotes Sent (White Card) */}
+        {/* Card 3: Quotes / Custom Boil Preps */}
         <div 
           onClick={() => onNavigateTab('inbox')}
-          className="bg-white border border-slate-200/80 rounded-3xl p-6 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col justify-between"
+          className="bg-[#0f1015] border border-white/10 rounded-3xl p-6 shadow-md hover:border-cajun-500/30 transition cursor-pointer flex flex-col justify-between"
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Quotes Sent</span>
-            <div className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition">
-              <ArrowUpRight className="w-4 h-4 text-slate-700" />
+            <span className="text-xs font-bold uppercase tracking-wider text-neutral-400">Quotes In Flight</span>
+            <div className="w-8 h-8 rounded-full border border-white/10 bg-white/5 flex items-center justify-center hover:bg-white/10 transition">
+              <ArrowUpRight className="w-4 h-4 text-neutral-300" />
             </div>
           </div>
           <div className="my-4">
-            <div className="text-4xl font-black font-heading text-slate-900">{stats.quoted}</div>
+            <div className="text-4xl font-black font-heading text-white">{stats.quoted}</div>
           </div>
-          <div className="inline-flex items-center space-x-1.5 text-xs text-blue-700 bg-blue-50 border border-blue-100 px-2.5 py-1 rounded-full w-max font-medium">
-            <span>📧 In discussion</span>
-            <span>with customers</span>
+          <div className="inline-flex items-center space-x-1.5 text-xs text-sky-400 bg-sky-500/10 border border-sky-500/20 px-2.5 py-1 rounded-full w-max font-medium">
+            <span>📧 In Discussion</span>
+            <span>catering & party packages</span>
           </div>
         </div>
 
-        {/* Card 4: Pending Needs Quote (White Card with Red Accent) */}
+        {/* Card 4: Pending Kitchen Requests */}
         <div 
           onClick={() => onNavigateTab('inbox')}
-          className="bg-white border border-shop-border rounded-3xl p-6 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col justify-between"
+          className="bg-[#0f1015] border border-cajun-500/30 rounded-3xl p-6 shadow-md hover:border-cajun-500/50 transition cursor-pointer flex flex-col justify-between"
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-shop-red">Pending Quotes</span>
-            <div className="w-8 h-8 rounded-full border border-shop-border bg-shop-light flex items-center justify-center hover:opacity-80 transition">
-              <ArrowUpRight className="w-4 h-4 text-shop-red" />
+            <span className="text-xs font-bold uppercase tracking-wider text-cajun-400">Pending Review</span>
+            <div className="w-8 h-8 rounded-full border border-cajun-500/20 bg-cajun-500/10 flex items-center justify-center hover:opacity-80 transition">
+              <ArrowUpRight className="w-4 h-4 text-cajun-400" />
             </div>
           </div>
           <div className="my-4">
-            <div className="text-4xl font-black font-heading text-shop-red">{stats.pending}</div>
+            <div className="text-4xl font-black font-heading text-cajun-400">{stats.pending}</div>
           </div>
-          <div className="inline-flex items-center space-x-1.5 text-xs text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-full w-max font-medium">
-            <span>⏳ Needs Price</span>
-            <span>awaiting shop response</span>
+          <div className="inline-flex items-center space-x-1.5 text-xs text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-full w-max font-medium">
+            <span>⏳ Needs Review</span>
+            <span>awaiting kitchen approval</span>
           </div>
         </div>
       </div>
 
       {/* ------------------------------------------------------------- */}
-      {/* SECOND ROW: Weekly Analytics + Active Bay Reminder + Quick Projects */}
+      {/* SECOND ROW: Weekly Analytics + Priority Boil Ticket + Quick List */}
       {/* ------------------------------------------------------------- */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Left: Weekly Repair Volume (5 Cols) */}
-        <div className="lg:col-span-5 bg-white border border-slate-200/80 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
+        {/* Left: Weekly Boil Volume (5 Cols) */}
+        <div className="lg:col-span-5 bg-[#0f1015] border border-white/10 rounded-3xl p-6 shadow-md flex flex-col justify-between">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-heading font-black text-sm uppercase tracking-wider text-slate-900">
-              Shop Repair Analytics
+            <h3 className="font-heading font-black text-sm uppercase tracking-wider text-white">
+              Weekly Boil & Dining Volume
             </h3>
-            <span className="text-xs text-slate-400 font-bold">This Week</span>
+            <span className="text-xs text-neutral-400 font-bold">This Week</span>
           </div>
 
-          {/* Bar Chart Visual (Matching reference pill bar graph) */}
+          {/* Bar Chart Visual */}
           <div className="flex items-end justify-between gap-3 h-40 pt-4 px-2">
             {[
-              { day: 'S', height: '45%', count: 3, solid: false },
-              { day: 'M', height: '80%', count: 8, solid: true },
-              { day: 'T', height: '65%', count: 6, solid: true, highlight: '34%' },
-              { day: 'W', height: '95%', count: 11, solid: true },
-              { day: 'T', height: '55%', count: 5, solid: false },
-              { day: 'F', height: '70%', count: 7, solid: false },
-              { day: 'S', height: '35%', count: 2, solid: false }
+              { day: 'M', height: '45%', count: 18, solid: false },
+              { day: 'T', height: '60%', count: 24, solid: true },
+              { day: 'W', height: '75%', count: 35, solid: true, highlight: '+42%' },
+              { day: 'T', height: '90%', count: 48, solid: true },
+              { day: 'F', height: '100%', count: 62, solid: true },
+              { day: 'S', height: '95%', count: 58, solid: true },
+              { day: 'S', height: '70%', count: 32, solid: false }
             ].map((bar, idx) => (
               <div key={idx} className="flex-1 flex flex-col items-center h-full justify-end group relative">
                 {bar.highlight && (
-                  <span className="absolute -top-7 text-[10px] font-bold text-red-600 bg-red-50 border border-red-200 px-1.5 py-0.5 rounded-full shadow-xs">
+                  <span className="absolute -top-7 text-[10px] font-bold text-cajun-300 bg-cajun-500/20 border border-cajun-500/40 px-1.5 py-0.5 rounded-full shadow-xs">
                     {bar.highlight}
                   </span>
                 )}
                 <div 
                   className={`w-full max-w-[36px] rounded-full transition-all duration-300 ${
                     bar.solid 
-                      ? 'bg-gradient-to-t from-red-700 to-red-500 shadow-sm' 
-                      : 'bg-slate-100 border border-slate-200/80'
+                      ? 'bg-gradient-to-t from-cajun-700 to-cajun-500 shadow-lg shadow-cajun-500/20' 
+                      : 'bg-white/5 border border-white/10'
                   }`}
                   style={{ height: bar.height }}
                 />
-                <span className="text-[11px] font-bold text-slate-400 mt-2">{bar.day}</span>
+                <span className="text-[11px] font-bold text-neutral-400 mt-2">{bar.day}</span>
               </div>
             ))}
           </div>
 
-          <div className="flex items-center justify-center space-x-6 pt-4 border-t border-slate-100 mt-2 text-xs">
-            <span className="flex items-center space-x-2 text-slate-600">
-              <span className="w-2.5 h-2.5 rounded-full bg-red-600" />
-              <span>Completed Jobs</span>
+          <div className="flex items-center justify-center space-x-6 pt-4 border-t border-white/10 mt-2 text-xs">
+            <span className="flex items-center space-x-2 text-neutral-300">
+              <span className="w-2.5 h-2.5 rounded-full bg-cajun-500" />
+              <span>Served Crawfish / Crab</span>
             </span>
-            <span className="flex items-center space-x-2 text-slate-400">
-              <span className="w-2.5 h-2.5 rounded-full bg-slate-200" />
-              <span>In Queue</span>
+            <span className="flex items-center space-x-2 text-neutral-500">
+              <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+              <span>Reservations</span>
             </span>
           </div>
         </div>
 
-        {/* Middle: Priority Bay Reminder (3 Cols) */}
-        <div className="lg:col-span-3 bg-white border border-slate-200/80 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
+        {/* Middle: Priority Ticket (3 Cols) */}
+        <div className="lg:col-span-3 bg-[#0f1015] border border-white/10 rounded-3xl p-6 shadow-md flex flex-col justify-between">
           <div>
-            <div className="flex items-center justify-between text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">
-              <span>Priority Bay</span>
-              <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
+            <div className="flex items-center justify-between text-xs font-bold text-cajun-400 uppercase tracking-wider mb-3">
+              <span>Priority Ticket</span>
+              <span className="w-2 h-2 rounded-full bg-cajun-500 animate-ping" />
             </div>
 
             {urgentOrder ? (
               <div className="space-y-2">
-                <h4 className="text-base font-black font-heading text-slate-900 leading-tight">
-                  {urgentOrder.make} {urgentOrder.modelAndYear}
+                <h4 className="text-base font-black font-heading text-white leading-tight">
+                  {urgentOrder.make || urgentOrder.name || 'Boil Feast Order'}
                 </h4>
-                <div className="text-xs text-red-600 font-bold">
-                  {urgentOrder.detailedService || urgentOrder.serviceCategory}
+                <div className="text-xs text-cajun-400 font-bold">
+                  {urgentOrder.detailedService || urgentOrder.serviceCategory || 'Louisiana Crawfish Boil'}
                 </div>
-                <p className="text-xs text-slate-500 line-clamp-2 mt-1">
-                  {urgentOrder.details || urgentOrder.customIssue || 'Customer requested service estimate.'}
+                <p className="text-xs text-neutral-400 line-clamp-2 mt-1">
+                  {urgentOrder.details || urgentOrder.customIssue || 'Spicy garlic butter seasoning with corn & sausage.'}
                 </p>
-                <div className="text-[11px] text-slate-400 flex items-center space-x-1 pt-1">
+                <div className="text-[11px] text-neutral-400 flex items-center space-x-1 pt-1">
                   <Clock className="w-3.5 h-3.5" />
-                  <span>Timeline: {urgentOrder.timeline || 'ASAP'}</span>
+                  <span>Desired Time: {urgentOrder.timeline || 'ASAP / Tonight'}</span>
                 </div>
               </div>
             ) : (
-              <div className="text-xs text-slate-400 py-6">No priority orders currently waiting.</div>
+              <div className="text-xs text-neutral-500 py-6">No pending tickets in queue.</div>
             )}
           </div>
 
           <button
             onClick={() => urgentOrder && onSelectQuote(urgentOrder)}
-            className="w-full mt-4 py-3 px-4 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-2xl transition shadow-md shadow-red-600/20 flex items-center justify-center space-x-2"
+            className="w-full mt-4 py-3 px-4 bg-gradient-to-r from-cajun-500 to-cajun-600 hover:from-cajun-600 hover:to-cajun-700 text-white font-bold text-xs rounded-2xl transition shadow-lg shadow-cajun-500/20 flex items-center justify-center space-x-2 cursor-pointer"
           >
-            <Wrench className="w-4 h-4" />
-            <span>Open Work Order</span>
+            <UtensilsCrossed className="w-4 h-4" />
+            <span>Open Order Details</span>
           </button>
         </div>
 
         {/* Right: Quick Recent Orders List (4 Cols) */}
-        <div className="lg:col-span-4 bg-white border border-slate-200/80 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
+        <div className="lg:col-span-4 bg-[#0f1015] border border-white/10 rounded-3xl p-6 shadow-md flex flex-col justify-between">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="font-heading font-black text-sm uppercase tracking-wider text-slate-900">
-              Active Orders
+            <h3 className="font-heading font-black text-sm uppercase tracking-wider text-white">
+              Recent Tickets
             </h3>
             <button
               onClick={onOpenNewOrder}
-              className="text-xs font-bold text-red-600 hover:text-red-700 flex items-center space-x-1 bg-red-50 px-2 py-1 rounded-lg"
+              className="text-xs font-bold text-cajun-400 hover:text-cajun-300 flex items-center space-x-1 bg-cajun-500/10 border border-cajun-500/20 px-2.5 py-1 rounded-lg transition"
             >
               <Plus className="w-3 h-3" />
               <span>New</span>
             </button>
           </div>
 
-          <div className="divide-y divide-slate-100 flex-1">
+          <div className="divide-y divide-white/5 flex-1">
             {quotes.slice(0, 4).map(q => (
               <div 
                 key={q.id}
                 onClick={() => onSelectQuote(q)}
-                className="py-2.5 flex items-center justify-between hover:bg-slate-50 rounded-xl px-2 -mx-2 transition cursor-pointer"
+                className="py-2.5 flex items-center justify-between hover:bg-white/5 rounded-xl px-2 -mx-2 transition cursor-pointer"
               >
                 <div className="min-w-0 pr-2">
-                  <div className="font-bold text-xs text-slate-900 truncate">
-                    {q.make} {q.modelAndYear}
+                  <div className="font-bold text-xs text-white truncate">
+                    {q.name}
                   </div>
-                  <div className="text-[11px] text-slate-400 truncate">
-                    {q.name} • {q.detailedService || q.serviceCategory}
+                  <div className="text-[11px] text-neutral-400 truncate">
+                    {q.detailedService || q.serviceCategory || 'Cajun Seafood Boil'}
                   </div>
                 </div>
-                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0 ${
-                  q.status === 'pending' ? 'bg-amber-50 text-amber-700 border border-amber-200' :
-                  q.status === 'quoted' ? 'bg-blue-50 text-blue-700 border border-blue-200' :
-                  q.status === 'completed' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' :
-                  'bg-slate-100 text-slate-600'
+                <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full shrink-0 ${
+                  q.status === 'pending' ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' :
+                  q.status === 'quoted' ? 'bg-sky-500/10 text-sky-400 border border-sky-500/20' :
+                  q.status === 'completed' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' :
+                  'bg-white/10 text-neutral-300'
                 }`}>
                   {q.status || 'Pending'}
                 </span>
@@ -310,27 +316,27 @@ export default function DashboardOverview({ onNavigateTab, onSelectQuote, onOpen
 
           <button
             onClick={() => onNavigateTab('orders')}
-            className="w-full text-center text-xs font-bold text-red-600 hover:text-red-700 pt-3 border-t border-slate-100 mt-2 flex items-center justify-center space-x-1"
+            className="w-full text-center text-xs font-bold text-cajun-400 hover:text-cajun-300 pt-3 border-t border-white/10 mt-2 flex items-center justify-center space-x-1 transition cursor-pointer"
           >
-            <span>View all {quotes.length} repair orders</span>
+            <span>View all {quotes.length} tickets & orders</span>
             <ChevronRight className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>
 
       {/* ------------------------------------------------------------- */}
-      {/* THIRD ROW: Customer Inquiries + Progress Arc + Live Bay Timer */}
+      {/* THIRD ROW: Customer Inquiries + Quality Gauge + Live Boil Timer */}
       {/* ------------------------------------------------------------- */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left: Customer Inquiries (5 Cols) */}
-        <div className="lg:col-span-5 bg-white border border-slate-200/80 rounded-3xl p-6 shadow-sm">
+        <div className="lg:col-span-5 bg-[#0f1015] border border-white/10 rounded-3xl p-6 shadow-md">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-heading font-black text-sm uppercase tracking-wider text-slate-900">
-              Customer Leads & Quotes
+            <h3 className="font-heading font-black text-sm uppercase tracking-wider text-white">
+              Guest Inquiries & Catering
             </h3>
             <button
               onClick={() => onNavigateTab('inbox')}
-              className="text-xs font-bold text-slate-600 hover:text-red-600 flex items-center space-x-1 border border-slate-200 px-2.5 py-1 rounded-xl"
+              className="text-xs font-bold text-neutral-300 hover:text-cajun-400 flex items-center space-x-1 border border-white/10 px-2.5 py-1 rounded-xl bg-white/5 transition"
             >
               <span>Open Inbox</span>
             </button>
@@ -338,31 +344,31 @@ export default function DashboardOverview({ onNavigateTab, onSelectQuote, onOpen
 
           <div className="space-y-3">
             {quotes.slice(0, 4).map(q => {
-              const initials = (q.name || 'Customer').split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
+              const initials = (q.name || 'Guest').split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
               return (
                 <div 
                   key={q.id}
                   onClick={() => onSelectQuote(q)}
-                  className="p-3 bg-slate-50/70 hover:bg-slate-100/80 border border-slate-100 rounded-2xl flex items-center justify-between transition cursor-pointer"
+                  className="p-3 bg-[#14141b] hover:bg-[#1a1b24] border border-white/5 rounded-2xl flex items-center justify-between transition cursor-pointer"
                 >
                   <div className="flex items-center space-x-3 min-w-0">
-                    <div className="w-9 h-9 rounded-xl bg-red-100 text-red-700 font-bold text-xs flex items-center justify-center shrink-0">
+                    <div className="w-9 h-9 rounded-xl bg-cajun-500/20 border border-cajun-500/30 text-cajun-400 font-bold text-xs flex items-center justify-center shrink-0">
                       {initials}
                     </div>
                     <div className="min-w-0">
-                      <h5 className="font-bold text-xs text-slate-900 truncate">{q.name}</h5>
-                      <span className="text-[11px] text-slate-500 truncate block">
-                        {q.make} ({q.modelAndYear})
+                      <h5 className="font-bold text-xs text-white truncate">{q.name}</h5>
+                      <span className="text-[11px] text-neutral-400 truncate block">
+                        {q.phone || q.email || 'Corpus Christi Guest'}
                       </span>
                     </div>
                   </div>
 
                   <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0 ${
-                    q.status === 'completed' ? 'bg-emerald-100 text-emerald-800' :
-                    q.status === 'quoted' ? 'bg-blue-100 text-blue-800' :
-                    'bg-amber-100 text-amber-800'
+                    q.status === 'completed' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' :
+                    q.status === 'quoted' ? 'bg-sky-500/10 text-sky-400 border border-sky-500/20' :
+                    'bg-amber-500/10 text-amber-400 border border-amber-500/20'
                   }`}>
-                    {q.status === 'completed' ? 'Completed' : q.status === 'quoted' ? 'Quoted' : 'Needs Price'}
+                    {q.status === 'completed' ? 'Fulfilled' : q.status === 'quoted' ? 'Quoted' : 'Review'}
                   </span>
                 </div>
               );
@@ -370,10 +376,10 @@ export default function DashboardOverview({ onNavigateTab, onSelectQuote, onOpen
           </div>
         </div>
 
-        {/* Middle: Shop Turnaround Gauge (3 Cols) */}
-        <div className="lg:col-span-3 bg-white border border-slate-200/80 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
-          <h3 className="font-heading font-black text-sm uppercase tracking-wider text-slate-900 mb-2">
-            Turnaround Rate
+        {/* Middle: Fresh Catch & Satisfaction Gauge (3 Cols) */}
+        <div className="lg:col-span-3 bg-[#0f1015] border border-white/10 rounded-3xl p-6 shadow-md flex flex-col justify-between">
+          <h3 className="font-heading font-black text-sm uppercase tracking-wider text-white mb-2">
+            Freshness & Rating
           </h3>
 
           <div className="relative flex flex-col items-center justify-center py-2">
@@ -382,60 +388,65 @@ export default function DashboardOverview({ onNavigateTab, onSelectQuote, onOpen
               <path
                 d="M 10 50 A 40 40 0 0 1 90 50"
                 fill="none"
-                stroke="#f1f5f9"
+                stroke="#262626"
                 strokeWidth="12"
                 strokeLinecap="round"
               />
               <path
-                d="M 10 50 A 40 40 0 0 1 75 20"
+                d="M 10 50 A 40 40 0 0 1 78 18"
                 fill="none"
-                stroke="#dc2626"
+                stroke="#ea580c"
                 strokeWidth="12"
                 strokeLinecap="round"
               />
             </svg>
             <div className="text-center -mt-6">
-              <div className="text-3xl font-black font-heading text-slate-900">82%</div>
-              <span className="text-[11px] font-bold text-slate-400">Same-Day Pickup</span>
+              <div className="text-3xl font-black font-heading text-white">4.8★</div>
+              <span className="text-[11px] font-bold text-neutral-400">Yelp & Google Score</span>
             </div>
           </div>
 
-          <div className="flex items-center justify-between text-[11px] text-slate-500 pt-3 border-t border-slate-100">
+          <div className="flex items-center justify-between text-[11px] text-neutral-400 pt-3 border-t border-white/10">
             <span className="flex items-center space-x-1">
-              <span className="w-2 h-2 rounded-full bg-red-600" />
-              <span>Completed</span>
+              <span className="w-2 h-2 rounded-full bg-cajun-500" />
+              <span>5-Star Praise</span>
             </span>
             <span className="flex items-center space-x-1">
-              <span className="w-2 h-2 rounded-full bg-slate-300" />
-              <span>Scheduled</span>
+              <span className="w-2 h-2 rounded-full bg-white/20" />
+              <span>Verified Local</span>
             </span>
           </div>
         </div>
 
-        {/* Right: Live Shop Bay Timer (4 Cols) */}
-        <div className="lg:col-span-4 bg-gradient-to-br from-slate-900 to-black text-white border border-slate-800 rounded-3xl p-6 shadow-lg flex flex-col justify-between">
-          <div className="flex items-center justify-between text-xs font-bold text-slate-400 uppercase tracking-wider">
-            <span>Shop Bay Timer</span>
+        {/* Right: Live Kitchen Boil Timer (4 Cols) */}
+        <div className="lg:col-span-4 bg-gradient-to-br from-[#0c0c14] to-[#14121a] text-white border border-cajun-500/30 rounded-3xl p-6 shadow-xl shadow-cajun-500/10 flex flex-col justify-between relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-cajun-500/10 rounded-full blur-2xl pointer-events-none" />
+          
+          <div className="flex items-center justify-between text-xs font-bold text-neutral-400 uppercase tracking-wider relative">
+            <span className="text-cajun-300 flex items-center space-x-1.5">
+              <Flame className="w-3.5 h-3.5 text-cajun-400" />
+              <span>Kitchen Boil Clock</span>
+            </span>
             <span className="text-emerald-400 font-mono text-[11px]">● ACTIVE</span>
           </div>
 
-          <div className="my-4 text-center">
-            <div className="text-3xl sm:text-4xl font-mono font-black tracking-widest text-white">
+          <div className="my-4 text-center relative">
+            <div className="text-3xl sm:text-4xl font-mono font-black tracking-widest text-cajun-100">
               {formatTimer(timerSeconds)}
             </div>
-            <span className="text-xs text-slate-400 mt-1 block">Current Diagnostic & Labor Clock</span>
+            <span className="text-xs text-neutral-400 mt-1 block">Live Crawfish & Crab Pot Steeping Clock</span>
           </div>
 
-          <div className="flex items-center justify-center space-x-3 pt-2">
+          <div className="flex items-center justify-center space-x-3 pt-2 relative">
             <button
               onClick={() => setIsTimerRunning(!isTimerRunning)}
-              className="w-10 h-10 rounded-2xl bg-white text-slate-900 flex items-center justify-center hover:bg-slate-200 transition active:scale-95"
+              className="w-10 h-10 rounded-2xl bg-cajun-500 text-white flex items-center justify-center hover:bg-cajun-600 transition active:scale-95 shadow-md shadow-cajun-500/30 cursor-pointer"
             >
               {isTimerRunning ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
             </button>
             <button
               onClick={() => setTimerSeconds(0)}
-              className="w-10 h-10 rounded-2xl bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center hover:bg-slate-700 transition active:scale-95"
+              className="w-10 h-10 rounded-2xl bg-white/10 text-neutral-300 hover:text-white flex items-center justify-center hover:bg-white/20 transition active:scale-95 cursor-pointer"
             >
               <RotateCcw className="w-4 h-4" />
             </button>

@@ -19,122 +19,85 @@ export default function Footer({ onOpenWizard, onNavigate }) {
   };
 
   return (
-    <footer className="bg-black text-neutral-400 text-sm sm:text-base pb-16 sm:pb-0 border-t border-neutral-900" role="contentinfo">
-      {/* Pre-footer CTA Bar */}
-      <div className="bg-gradient-to-r from-red-800 via-red-700 to-orange-700 py-10 sm:py-14 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-center md:text-left">
-            <h3 className="text-2xl sm:text-4xl font-black font-heading text-white tracking-tight">
-              Ready for an authentic Louisiana Cajun seafood feast?
-            </h3>
-            <p className="text-red-100 mt-2 text-base sm:text-lg">
-              Book a boil table or pre-order hot takeout in under 2 minutes.
+    <footer className="bg-[#040405] text-neutral-400 text-xs sm:text-sm border-t border-white/5 pt-16 pb-12" role="contentinfo">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* 5-Column Grid Matching Template Footer */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-10 pb-12 border-b border-white/5">
+          
+          {/* Col 1: Brand */}
+          <div className="col-span-2 md:col-span-1 space-y-3">
+            <div className="flex items-center space-x-2.5">
+              <img 
+                src="/images/captain-logo.png" 
+                alt="Captain Paul's Logo" 
+                className="w-9 h-9 rounded-full object-cover border border-cajun-500/50" 
+              />
+              <span className="font-heading font-black text-white text-sm tracking-wider uppercase">
+                Captain Paul's
+              </span>
+            </div>
+            <p className="text-[11px] leading-relaxed text-neutral-500">
+              Authentic Louisiana Cajun seafood boils, crispy Gulf flounder, and savory gumbo in Corpus Christi, TX.
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto shrink-0">
-            <button
-              onClick={() => onOpenWizard()}
-              className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white text-red-700 font-extrabold text-base hover:bg-neutral-100 transition shadow-xl active:scale-95 text-center cursor-pointer"
-              aria-label="Order Seafood Feast Online"
-            >
-              Order Online / Book Table
-            </button>
-            <a
-              href={`tel:${BUSINESS_INFO.phone.replace(/[^0-9]/g, '')}`}
-              className="w-full sm:w-auto px-7 py-4 rounded-2xl bg-red-950/60 hover:bg-red-900 text-white font-bold text-base transition border border-red-500/40 flex items-center justify-center space-x-2.5 active:scale-95 text-center cursor-pointer shadow-lg"
-              aria-label={`Call Captain Paul's Cajun Seafood at ${BUSINESS_INFO.phone}`}
-            >
-              <Phone className="w-5 h-5 text-amber-400" aria-hidden="true" />
-              <span>{BUSINESS_INFO.phone}</span>
-            </a>
-          </div>
-        </div>
-      </div>
 
-      {/* Main Footer Columns */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-        {/* Brand */}
-        <div className="space-y-4">
-          <div className="flex items-center space-x-3">
-            <img 
-              src="/images/captain-logo.png" 
-              alt="Captain Paul's Cajun Seafood Logo" 
-              width="50"
-              height="50"
-              loading="lazy"
-              decoding="async"
-              className="h-12 w-12 rounded-full object-cover border border-red-600/50" 
-            />
-            <span className="font-heading font-black text-white text-base sm:text-lg tracking-tight">
-              CAPTAIN PAUL'S CAJUN SEAFOOD
-            </span>
+          {/* Col 2: Menu */}
+          <div className="space-y-2.5">
+            <h4 className="text-white font-extrabold text-xs uppercase tracking-wider">Menu</h4>
+            <ul className="space-y-1.5 text-neutral-400">
+              <li><button onClick={(e) => handleLinkClick(e, 'services')} className="hover:text-cajun-400 transition cursor-pointer">Seafood Boils</button></li>
+              <li><button onClick={(e) => handleLinkClick(e, 'services')} className="hover:text-cajun-400 transition cursor-pointer">Fried Baskets</button></li>
+              <li><button onClick={(e) => handleLinkClick(e, 'services')} className="hover:text-cajun-400 transition cursor-pointer">Seafood Gumbo</button></li>
+              <li><button onClick={(e) => handleLinkClick(e, 'services')} className="hover:text-cajun-400 transition cursor-pointer">Po' Boys</button></li>
+            </ul>
           </div>
-          <p className="text-neutral-400 text-sm sm:text-base leading-relaxed">
-            Authentic Louisiana Cajun boils, crispy Gulf flounder, jumbo shrimp, and slow-simmered seafood gumbo. Proudly serving Corpus Christi and Coastal Texas.
-          </p>
-        </div>
 
-        {/* Quick Links */}
-        <div>
-          <h4 className="text-white font-extrabold text-sm sm:text-base uppercase tracking-wider mb-4">Quick Links</h4>
-          <ul className="space-y-2.5 text-sm sm:text-base">
-            {[
-              { label: 'Full Cajun Menu & Boils', target: 'services' },
-              { label: 'Our Cajun Heritage', target: '#about' },
-              { label: 'Restaurant Amenities', target: '#amenities' },
-              { label: 'Airline Rd Hours & Map', target: '#location' },
-              { label: 'Verified Guest Reviews', target: '#reviews' },
-            ].map(link => (
-              <li key={link.label}>
-                <button 
-                  onClick={(e) => handleLinkClick(e, link.target)} 
-                  className="hover:text-red-400 transition text-neutral-300 hover:underline text-left cursor-pointer"
-                >
-                  {link.label}
-                </button>
-              </li>
-            ))}
-          </ul>
+          {/* Col 3: Experience */}
+          <div className="space-y-2.5">
+            <h4 className="text-white font-extrabold text-xs uppercase tracking-wider">Experience</h4>
+            <ul className="space-y-1.5 text-neutral-400">
+              <li><button onClick={(e) => handleLinkClick(e, '#flavors')} className="hover:text-cajun-400 transition cursor-pointer">Boil Flavors</button></li>
+              <li><button onClick={(e) => handleLinkClick(e, '#flavors')} className="hover:text-cajun-400 transition cursor-pointer">Heat Profiles</button></li>
+              <li><button onClick={(e) => handleLinkClick(e, '#about')} className="hover:text-cajun-400 transition cursor-pointer">Bayou Heritage</button></li>
+              <li><button onClick={(e) => handleLinkClick(e, '#reviews')} className="hover:text-cajun-400 transition cursor-pointer">Guest Reviews</button></li>
+            </ul>
+          </div>
+
+          {/* Col 4: Location */}
+          <div className="space-y-2.5">
+            <h4 className="text-white font-extrabold text-xs uppercase tracking-wider">Visit Us</h4>
+            <div className="space-y-1 text-neutral-400 text-[11px]">
+              <p className="text-neutral-200 font-semibold">{BUSINESS_INFO.address.street}</p>
+              <p>{BUSINESS_INFO.address.city}, {BUSINESS_INFO.address.state} {BUSINESS_INFO.address.zip}</p>
+              <p className="pt-1 text-cajun-400 font-bold">{BUSINESS_INFO.phone}</p>
+            </div>
+          </div>
+
+          {/* Col 5: Hours & Admin */}
+          <div className="space-y-2.5">
+            <h4 className="text-white font-extrabold text-xs uppercase tracking-wider">Boil Hours</h4>
+            <div className="space-y-1 text-neutral-400 text-[11px]">
+              <p>Mon–Wed: 4 PM – 10:30 PM</p>
+              <p>Thu: 11 AM – 10:30 PM</p>
+              <p>Fri–Sat: 11 AM – 11 PM</p>
+              <p>Sun: 11 AM – 10 PM</p>
+              <div className="pt-2">
+                <a href="#/admin" className="text-[10px] text-neutral-600 hover:text-cajun-400 transition">
+                  Staff Portal
+                </a>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        {/* Hours */}
-        <div>
-          <h4 className="text-white font-extrabold text-sm sm:text-base uppercase tracking-wider mb-4">Boil Hours</h4>
-          <div className="space-y-1.5 text-xs sm:text-sm text-neutral-400">
-            <p><span className="text-neutral-200 font-semibold">Mon – Wed:</span> 4:00 PM – 10:30 PM</p>
-            <p><span className="text-neutral-200 font-semibold">Thursday:</span> 11:00 AM – 10:30 PM</p>
-            <p><span className="text-neutral-200 font-semibold">Fri – Sat:</span> 11:00 AM – 11:00 PM</p>
-            <p><span className="text-neutral-200 font-semibold">Sunday:</span> 11:00 AM – 10:00 PM</p>
-          </div>
+        {/* Bottom Copyright */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-neutral-600 gap-3">
+          <p>© {new Date().getFullYear()} {BUSINESS_INFO.legalName}. All rights reserved.</p>
+          <p>Crafted with authentic Louisiana Cajun pride • Corpus Christi, TX</p>
         </div>
 
-        {/* Contact info */}
-        <div className="space-y-3">
-          <h4 className="text-white font-extrabold text-sm sm:text-base uppercase tracking-wider mb-4">Visit Us</h4>
-          <div className="flex items-start space-x-3 text-neutral-300 text-sm">
-            <MapPin className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
-            <span>{BUSINESS_INFO.address.formatted}</span>
-          </div>
-          <div className="flex items-center space-x-3 text-neutral-300 text-sm">
-            <Phone className="w-5 h-5 text-red-500 shrink-0" />
-            <a href={`tel:${BUSINESS_INFO.phone.replace(/[^0-9]/g, '')}`} className="hover:text-white transition font-bold">
-              {BUSINESS_INFO.phone}
-            </a>
-          </div>
-          <div className="pt-2">
-            <a
-              href="/admin"
-              className="inline-block text-xs text-neutral-600 hover:text-neutral-400 transition"
-            >
-              Staff Portal Access
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Copyright */}
-      <div className="border-t border-neutral-900 py-6 text-center text-xs text-neutral-500">
-        <p>© {new Date().getFullYear()} {BUSINESS_INFO.legalName}. All Rights Reserved. Crafted with authentic Cajun pride in Corpus Christi, TX.</p>
       </div>
     </footer>
   );

@@ -4,78 +4,85 @@
 
 @layer base {
   :root {
-    color-scheme: light;
+    color-scheme: dark;
+    background-color: #050507 !important;
   }
   
-  html.dark {
-    color-scheme: dark;
-    background-color: #000000 !important;
-  }
-
-  body {
-    @apply bg-white text-gray-900 antialiased overflow-x-hidden transition-colors duration-200;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-  }
-
-  html.dark body {
-    background-color: #000000 !important;
+  html {
+    background-color: #050507 !important;
     color: #ffffff !important;
   }
 
-  /* Clean scrollbar */
+  body {
+    background-color: #050507 !important;
+    color: #ffffff !important;
+    @apply antialiased overflow-x-hidden transition-colors duration-200;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Clean dark scrollbar */
   ::-webkit-scrollbar {
     width: 7px;
   }
   ::-webkit-scrollbar-track {
-    background: #f5f5f5;
-  }
-  html.dark ::-webkit-scrollbar-track {
-    background: #000000;
+    background: #050507;
   }
   ::-webkit-scrollbar-thumb {
-    background: #c4c4c4;
+    background: #22222b;
     border-radius: 4px;
   }
-  html.dark ::-webkit-scrollbar-thumb {
-    background: #262626;
-  }
   ::-webkit-scrollbar-thumb:hover {
-    background: #999;
-  }
-  html.dark ::-webkit-scrollbar-thumb:hover {
-    background: #404040;
+    background: #ea580c;
   }
 }
 
 @layer utilities {
-  /* Thick & Alive tactile card shadows */
+  /* Tactile Dark Card Shadows & Subtle Hairline Outlines */
   .card-thick {
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08), 0 20px 25px -5px rgba(0, 0, 0, 0.04), 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-  }
-  .dark .card-thick {
-    box-shadow: 0 14px 40px -10px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05);
-  }
-  .card-thick-hover {
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08), 0 20px 25px -5px rgba(0, 0, 0, 0.04), 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-  }
-  .dark .card-thick-hover {
-    box-shadow: 0 14px 40px -10px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05);
-  }
-  .card-thick-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 35px -10px rgba(220, 38, 38, 0.15), 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 0 0 2px rgba(220, 38, 38, 0.3);
-  }
-  .dark .card-thick-hover:hover {
-    box-shadow: 0 22px 45px -10px rgba(220, 38, 38, 0.25), 0 0 0 2px rgba(220, 38, 38, 0.4);
+    box-shadow: 0 16px 45px -10px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.08);
   }
 
-  /* Tactile Dotted Grid Backdrop */
-  .bg-grid-pattern {
-    background-size: 24px 24px;
-    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  .card-thick-hover {
+    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 16px 45px -10px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.08);
   }
-  .dark .bg-grid-pattern {
-    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+
+  .card-thick-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 50px -10px rgba(234, 88, 12, 0.25), 0 0 0 2px rgba(249, 115, 22, 0.45);
+  }
+
+  /* Ambient Cajun Skillet Glow (Template Visual Halo) */
+  .cajun-halo {
+    position: relative;
+  }
+  .cajun-halo::before {
+    content: '';
+    position: absolute;
+    inset: -15%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(249, 115, 22, 0.32) 0%, rgba(249, 115, 22, 0.08) 55%, transparent 75%);
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(32px);
+  }
+
+  .cajun-halo-lg::before {
+    content: '';
+    position: absolute;
+    inset: -25%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(234, 88, 12, 0.38) 0%, rgba(249, 115, 22, 0.1) 60%, transparent 80%);
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(44px);
+  }
+
+  /* Subtle slate stone texture */
+  .bg-stone-texture {
+    background-image: 
+      radial-gradient(circle at 50% 20%, rgba(249, 115, 22, 0.04) 0%, transparent 60%),
+      radial-gradient(circle, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 32px 32px;
   }
 }

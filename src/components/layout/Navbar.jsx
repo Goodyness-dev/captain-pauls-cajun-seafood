@@ -40,9 +40,9 @@ export default function Navbar({ onOpenWizard, currentPage = 'home', onNavigate,
   };
 
   const navLinks = [
-    { name: 'Menu & Boils', target: 'services' },
-    { name: 'Our Heritage', target: '#about' },
-    { name: 'Amenities', target: '#amenities' },
+    { name: 'Menu', target: 'services' },
+    { name: 'Boil Flavors', target: '#flavors' },
+    { name: 'Our Story', target: '#about' },
     { name: 'Hours & Location', target: '#location' },
     { name: 'Reviews', target: '#reviews' },
   ];
@@ -51,13 +51,13 @@ export default function Navbar({ onOpenWizard, currentPage = 'home', onNavigate,
     <header 
       className={`sticky top-0 z-40 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white/95 dark:bg-black/95 backdrop-blur-md shadow-md border-b border-neutral-200 dark:border-neutral-800' 
-          : 'bg-white dark:bg-black border-b border-neutral-100 dark:border-neutral-900'
+          ? 'bg-obsidian-950/90 backdrop-blur-md border-b border-white/10 shadow-2xl' 
+          : 'bg-transparent border-b border-white/5'
       }`}
       role="banner"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-22 flex items-center justify-between">
-        {/* Logo & Brand */}
+        {/* Monogram Brand */}
         <button 
           onClick={(e) => handleNavClick(e, '#')} 
           className="flex items-center space-x-3.5 group text-left cursor-pointer"
@@ -65,34 +65,34 @@ export default function Navbar({ onOpenWizard, currentPage = 'home', onNavigate,
         >
           <img 
             src="/images/captain-logo.png" 
-            alt="Captain Paul's Cajun Seafood Logo - Corpus Christi TX" 
-            width="48"
-            height="48"
+            alt="Captain Paul's Cajun Seafood Logo" 
+            width="44"
+            height="44"
             decoding="async"
-            className="h-12 w-12 rounded-full object-cover border-2 border-red-600 shadow-md group-hover:scale-105 transition-transform"
+            className="h-11 w-11 rounded-full object-cover border border-cajun-500/60 shadow-lg shadow-cajun-500/20 group-hover:scale-105 transition-transform"
           />
           <div className="flex flex-col">
-            <span className="font-heading text-lg sm:text-2xl font-black tracking-tight text-neutral-900 dark:text-white leading-tight">
-              Captain Paul's <span className="text-red-600">Cajun Seafood</span>
+            <span className="font-heading text-lg sm:text-xl font-black tracking-wider text-white uppercase leading-tight">
+              Captain Paul's
             </span>
-            <span className="text-xs sm:text-sm tracking-wider uppercase text-neutral-500 dark:text-neutral-400 hidden xs:block font-bold">
-              Corpus Christi, Texas
+            <span className="text-[10px] sm:text-xs tracking-widest uppercase text-cajun-400 font-extrabold">
+              Cajun Seafood & Boils
             </span>
           </div>
         </button>
 
-        {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center space-x-7" aria-label="Main Navigation">
+        {/* Center Nav Links */}
+        <nav className="hidden md:flex items-center space-x-1 lg:space-x-2 bg-obsidian-800/80 px-4 py-2 rounded-full border border-white/10 backdrop-blur-sm shadow-inner" aria-label="Main Navigation">
           {navLinks.map((link) => {
             const isActive = link.target === 'services' && currentPage === 'services';
             return (
               <button
                 key={link.name}
                 onClick={(e) => handleNavClick(e, link.target)}
-                className={`text-base font-bold transition-colors cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
                   isActive 
-                    ? 'text-red-600 dark:text-red-400 font-extrabold' 
-                    : 'text-neutral-700 dark:text-neutral-300 hover:text-red-600 dark:hover:text-red-400'
+                    ? 'text-white bg-cajun-600/30 border border-cajun-500/50' 
+                    : 'text-neutral-300 hover:text-white hover:bg-white/5'
                 }`}
               >
                 {link.name}
@@ -101,75 +101,58 @@ export default function Navbar({ onOpenWizard, currentPage = 'home', onNavigate,
           })}
         </nav>
 
-        {/* Right CTA + Dark Mode */}
+        {/* Right CTA */}
         <div className="hidden sm:flex items-center space-x-4">
-          {/* Dark Mode Toggle */}
-          <button
-            onClick={onToggleDarkMode}
-            className="p-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition cursor-pointer"
-            aria-label="Toggle theme"
-          >
-            {darkMode ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5" />}
-          </button>
-
-          {/* Direct Phone Call */}
           <a
             href={`tel:${BUSINESS_INFO.phone.replace(/[^0-9]/g, '')}`}
-            className="hidden xl:flex items-center space-x-2 text-sm font-bold text-neutral-800 dark:text-neutral-200 hover:text-red-600 dark:hover:text-red-400 transition"
+            className="hidden lg:flex items-center space-x-2 text-xs font-bold text-neutral-300 hover:text-cajun-400 transition"
           >
-            <Phone className="w-4 h-4 text-red-600" />
+            <Phone className="w-3.5 h-3.5 text-cajun-500" />
             <span>{BUSINESS_INFO.phone}</span>
           </a>
 
-          {/* Primary CTA */}
+          {/* Glowing Orange Pill Button matching template */}
           <button
             onClick={() => onOpenWizard()}
-            className="px-6 py-3 rounded-2xl bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white font-extrabold text-sm sm:text-base transition-all shadow-md active:scale-95 flex items-center space-x-2 cursor-pointer"
+            className="px-6 py-2.5 rounded-full bg-gradient-to-r from-cajun-500 to-cajun-600 hover:from-cajun-600 hover:to-orange-700 text-white font-black text-xs sm:text-sm tracking-wide transition-all shadow-lg shadow-cajun-500/30 hover:shadow-cajun-500/50 active:scale-95 flex items-center space-x-2 cursor-pointer border border-orange-400/30"
           >
-            <Flame className="w-4 h-4 text-amber-300" />
-            <span>Order / Book Table</span>
+            <span>Order Feast</span>
+            <ChevronRight className="w-3.5 h-3.5" />
           </button>
         </div>
 
-        {/* Mobile Menu & Dark Mode Button */}
-        <div className="flex items-center space-x-2 lg:hidden">
-          <button
-            onClick={onToggleDarkMode}
-            className="p-2 rounded-lg text-neutral-600 dark:text-neutral-300"
-            aria-label="Toggle theme"
-          >
-            {darkMode ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5" />}
-          </button>
+        {/* Mobile Menu Button */}
+        <div className="flex items-center space-x-2 md:hidden">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition cursor-pointer"
+            className="p-2.5 rounded-2xl bg-obsidian-800 border border-white/10 text-neutral-200 hover:text-white transition cursor-pointer"
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white dark:bg-black border-b border-neutral-200 dark:border-neutral-800 px-4 py-6 space-y-4 shadow-xl">
-          <nav className="flex flex-col space-y-3">
+        <div className="md:hidden bg-obsidian-900 border-b border-white/10 px-4 py-6 space-y-4 shadow-2xl">
+          <nav className="flex flex-col space-y-2">
             {navLinks.map((link) => (
               <button
                 key={link.name}
                 onClick={(e) => handleNavClick(e, link.target)}
-                className="text-left py-2 px-3 rounded-xl text-base font-bold text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition"
+                className="text-left py-2.5 px-3 rounded-xl text-sm font-bold text-neutral-200 hover:bg-obsidian-800 hover:text-cajun-400 transition"
               >
                 {link.name}
               </button>
             ))}
           </nav>
-          <div className="pt-4 border-t border-neutral-200 dark:border-neutral-800 flex flex-col space-y-3">
+          <div className="pt-4 border-t border-white/10 flex flex-col space-y-3">
             <a
               href={`tel:${BUSINESS_INFO.phone.replace(/[^0-9]/g, '')}`}
-              className="py-3 px-4 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-center font-bold text-neutral-900 dark:text-white flex items-center justify-center space-x-2"
+              className="py-3 px-4 rounded-full bg-obsidian-800 text-center font-bold text-neutral-200 flex items-center justify-center space-x-2 text-sm border border-white/10"
             >
-              <Phone className="w-4 h-4 text-red-600" />
+              <Phone className="w-4 h-4 text-cajun-500" />
               <span>Call: {BUSINESS_INFO.phone}</span>
             </a>
             <button
@@ -177,7 +160,7 @@ export default function Navbar({ onOpenWizard, currentPage = 'home', onNavigate,
                 setMobileMenuOpen(false);
                 onOpenWizard();
               }}
-              className="py-3.5 px-4 rounded-2xl bg-gradient-to-r from-red-600 to-orange-600 text-white font-extrabold text-center shadow-md flex items-center justify-center space-x-2"
+              className="py-3.5 px-4 rounded-full bg-gradient-to-r from-cajun-500 to-cajun-600 text-white font-extrabold text-center shadow-lg shadow-cajun-500/30 flex items-center justify-center space-x-2 text-sm"
             >
               <Flame className="w-4 h-4 text-amber-300" />
               <span>Order Feast / Book Table</span>
