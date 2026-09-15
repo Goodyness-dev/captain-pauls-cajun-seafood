@@ -1,0 +1,81 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  
+  html.dark {
+    color-scheme: dark;
+    background-color: #000000 !important;
+  }
+
+  body {
+    @apply bg-white text-gray-900 antialiased overflow-x-hidden transition-colors duration-200;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  html.dark body {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+  }
+
+  /* Clean scrollbar */
+  ::-webkit-scrollbar {
+    width: 7px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f5f5f5;
+  }
+  html.dark ::-webkit-scrollbar-track {
+    background: #000000;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #c4c4c4;
+    border-radius: 4px;
+  }
+  html.dark ::-webkit-scrollbar-thumb {
+    background: #262626;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #999;
+  }
+  html.dark ::-webkit-scrollbar-thumb:hover {
+    background: #404040;
+  }
+}
+
+@layer utilities {
+  /* Thick & Alive tactile card shadows */
+  .card-thick {
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08), 0 20px 25px -5px rgba(0, 0, 0, 0.04), 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  }
+  .dark .card-thick {
+    box-shadow: 0 14px 40px -10px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+  .card-thick-hover {
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08), 0 20px 25px -5px rgba(0, 0, 0, 0.04), 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  }
+  .dark .card-thick-hover {
+    box-shadow: 0 14px 40px -10px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+  .card-thick-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 35px -10px rgba(220, 38, 38, 0.15), 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 0 0 2px rgba(220, 38, 38, 0.3);
+  }
+  .dark .card-thick-hover:hover {
+    box-shadow: 0 22px 45px -10px rgba(220, 38, 38, 0.25), 0 0 0 2px rgba(220, 38, 38, 0.4);
+  }
+
+  /* Tactile Dotted Grid Backdrop */
+  .bg-grid-pattern {
+    background-size: 24px 24px;
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  }
+  .dark .bg-grid-pattern {
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  }
+}
