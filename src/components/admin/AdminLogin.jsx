@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Lock, Eye, EyeOff, Flame, AlertCircle, ArrowLeft, Loader2, ShieldCheck } from '../common/Icons';
 import { authApi } from '../../services/api';
 import { BUSINESS_INFO } from '../../data/businessData';
@@ -103,8 +103,15 @@ export default function AdminLogin({ onLoginSuccess, onBackToSite }) {
                 {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               </button>
             </div>
-            <p className="text-[11px] text-slate-400 mt-2">
-              Default demo key configured in environment.
+            <p className="text-xs text-amber-500/90 dark:text-amber-400 mt-2 font-medium flex items-center justify-between">
+              <span>Demo Password: <code className="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-red-600 dark:text-red-400 font-mono font-bold">captain2024</code></span>
+              <button
+                type="button"
+                onClick={() => setPassword('captain2024')}
+                className="underline hover:text-white transition cursor-pointer"
+              >
+                Auto-fill
+              </button>
             </p>
           </div>
 
