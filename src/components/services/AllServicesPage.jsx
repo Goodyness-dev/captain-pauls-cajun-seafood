@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   SERVICES, 
   SERVICE_CATEGORIES 
@@ -134,21 +134,45 @@ export default function AllServicesPage({ onOpenWizard, onBackToHome }) {
                 className="bg-white dark:bg-neutral-900/90 rounded-3xl p-7 card-thick-hover border-2 border-neutral-200/90 dark:border-neutral-800/90 flex flex-col justify-between transition-all"
               >
                 <div>
-                  <div className="flex items-start justify-between gap-3 mb-4">
-                    <div className="p-3.5 rounded-2xl bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-900/60 text-red-600 dark:text-amber-400 shrink-0">
-                      <IconComponent className="w-6 h-6" />
-                    </div>
-                    <div className="flex flex-col items-end gap-1.5">
-                      <span className="text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300">
-                        {service.category}
-                      </span>
-                      {service.popular && (
-                        <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded-full bg-amber-400 text-black">
-                          Popular
+                  {service.image && (
+                    <div className="relative w-full h-48 mb-5 rounded-2xl overflow-hidden border border-neutral-200/80 dark:border-neutral-800/80 bg-neutral-950 group">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
+                      <div className="absolute top-3 right-3 flex flex-col items-end gap-1.5">
+                        <span className="text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md text-white border border-white/10 shadow-sm">
+                          {service.category}
                         </span>
-                      )}
+                        {service.popular && (
+                          <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded-full bg-amber-400 text-black shadow-md">
+                            Popular
+                          </span>
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  )}
+
+                  {!service.image && (
+                    <div className="flex items-start justify-between gap-3 mb-4">
+                      <div className="p-3.5 rounded-2xl bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-900/60 text-red-600 dark:text-amber-400 shrink-0">
+                        <IconComponent className="w-6 h-6" />
+                      </div>
+                      <div className="flex flex-col items-end gap-1.5">
+                        <span className="text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300">
+                          {service.category}
+                        </span>
+                        {service.popular && (
+                          <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded-full bg-amber-400 text-black">
+                            Popular
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  )}
 
                   <h2 className="text-xl sm:text-2xl font-extrabold text-neutral-900 dark:text-white mb-2.5 leading-snug">
                     {service.title}

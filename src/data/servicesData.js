@@ -1,4 +1,4 @@
-﻿export const SERVICES = [
+export const SERVICES = [
   {
     id: 'captains-combo-boil',
     title: "Captain's Ultimate Seafood Boil Combo",
@@ -6,6 +6,7 @@
     subType: 'Signature Boil Combo',
     description: '1 lb Snow Crab Clusters, 1 lb Jumbo Gulf Shrimp, and 1 lb Crawfish served with sweet corn, red potatoes, and sliced smoked andouille sausage drenched in our proprietary Cajun garlic butter.',
     icon: 'Flame',
+    image: '/images/crawfish-boil.jpg',
     popular: true,
   },
   {
@@ -15,6 +16,7 @@
     subType: 'Crab Boil',
     description: 'Sweet, tender, flaky snow crab legs steamed fresh and tossed in your choice of sauce (Garlic Butter, Cajun, Lemon Pepper, or Captain’s Secret Mix) and heat level.',
     icon: 'Sparkles',
+    image: '/images/crab-legs.jpg',
     popular: true,
   },
   {
@@ -24,6 +26,7 @@
     subType: 'Crawfish Boil',
     description: 'Plump Louisiana crawfish boiled in our 14-spice bayou seasoning blend, served piping hot by the pound with garlic butter dip.',
     icon: 'Flame',
+    image: '/images/crawfish-boil.jpg',
     popular: true,
   },
   {
@@ -33,6 +36,7 @@
     subType: 'Crab Boil',
     description: 'Jumbo succulent King Crab legs split for easy cracking, soaked in rich clarified garlic herb butter with bayou aromatics.',
     icon: 'Crown',
+    image: '/images/crab-legs.jpg',
     popular: true,
   },
   {
@@ -42,6 +46,7 @@
     subType: 'Shrimp Boil',
     description: 'Fresh locally sourced Gulf shrimp boiled shell-on to retain peak juiciness and flavor, tossed in savory house boil sauce.',
     icon: 'Waves',
+    image: '/images/cajun_shrimp_fries.jpg',
     popular: false,
   },
   {
@@ -51,6 +56,7 @@
     subType: 'Mussels & Clams',
     description: 'Meaty green-lipped mussels and sweet baby clams steeped in fragrant Cajun garlic broth with fresh herbs and lemon wedges.',
     icon: 'Shell',
+    image: '/images/crawfish-boil.jpg',
     popular: false,
   },
   {
@@ -60,6 +66,7 @@
     subType: 'Fish Basket',
     description: 'Corpus Christi customer favorite! Tender white flounder fillets coated in our crispy, seasoned cornmeal crust, served with Cajun fries, golden hushpuppies, and house remoulade.',
     icon: 'Utensils',
+    image: '/images/fried-flounder.jpg',
     popular: true,
   },
   {
@@ -69,6 +76,7 @@
     subType: 'Fish Basket',
     description: 'Fresh farm-raised catfish fillets dusted in traditional Cajun cornmeal spice, fried to golden perfection with house-made tartar sauce and lemon.',
     icon: 'Utensils',
+    image: '/images/southern-fried-catfish.jpg',
     popular: true,
   },
   {
@@ -78,6 +86,7 @@
     subType: 'Shrimp Basket',
     description: 'Hand-breaded jumbo Gulf shrimp fried extra crispy, served with crispy fries, cocktail sauce, and seasoned hushpuppies.',
     icon: 'Sparkles',
+    image: '/images/jumbo-butterfly-shrimp-basket.jpg',
     popular: true,
   },
   {
@@ -87,6 +96,7 @@
     subType: 'Oyster Basket',
     description: 'Plump Gulf oysters lightly breaded in seasoned cornmeal flour and flash-fried to golden, juicy perfection.',
     icon: 'Shell',
+    image: '/images/oysters-bites.jpg',
     popular: false,
   },
   {
@@ -96,6 +106,7 @@
     subType: 'Combo Platter',
     description: 'The ultimate fried feast: 1 Flounder fillet, 1 Catfish fillet, 4 Jumbo Shrimp, and 4 Oysters served with double fries, hushpuppies, and all house sauces.',
     icon: 'Award',
+    image: '/images/fried-flounder.jpg',
     popular: true,
   },
   {
@@ -105,6 +116,7 @@
     subType: 'Chicken Basket',
     description: 'Buttermilk-marinated tender chicken tenders fried crispy with seasoned Cajun flour, served with honey mustard and Cajun fries.',
     icon: 'Utensils',
+    image: '/images/cajun_shrimp_fries.jpg',
     popular: false,
   },
   {
@@ -114,6 +126,7 @@
     subType: 'Gumbo & Stews',
     description: 'Slow-simmered for 6 hours with a rich, dark mahogany roux, Gulf crab, succulent shrimp, smoked andouille sausage, okra, and holy trinity vegetables over steamed white rice.',
     icon: 'Soup',
+    image: '/images/authentic-seafood-gumbo.jpg',
     popular: true,
   },
   {
@@ -123,6 +136,7 @@
     subType: 'Étouffée',
     description: 'Tender Louisiana crawfish tails smothered in a velvety, rich blonde butter roux loaded with garlic, bell peppers, onions, celery, and served over jasmine rice.',
     icon: 'Flame',
+    image: '/images/crawfish-etouffee.jpg',
     popular: true,
   },
   {
@@ -132,6 +146,7 @@
     subType: 'Sandwiches',
     description: 'Warm, crusty French baguette dressed with shredded lettuce, ripe tomatoes, pickles, and zesty Creole remoulade sauce. Choice of Fried Shrimp, Catfish, or Oysters.',
     icon: 'Sandwich',
+    image: '/images/shrimp_po_boy.jpg',
     popular: true,
   },
   {
@@ -141,6 +156,7 @@
     subType: 'Noodles & Pasta',
     description: 'Springy egg noodles tossed at high heat in rich garlic butter, secret Cajun spice glaze, aged parmesan, and chopped green onions. Perfect accompaniment to crab boils!',
     icon: 'Sparkles',
+    image: '/images/cajun-garlic-butter-noodles.jpg',
     popular: true,
   },
   {
@@ -150,6 +166,7 @@
     subType: 'Appetizers',
     description: 'Authentic Louisiana pork and rice sausage blended with Cajun seasonings, rolled in panko breadcrumbs, deep-fried crispy, and served with spicy bayou dip.',
     icon: 'Utensils',
+    image: '/images/cajun-boudin-balls.jpg',
     popular: true,
   },
   {
@@ -159,6 +176,7 @@
     subType: 'Appetizers',
     description: 'Tender farmed alligator tail meat marinated in buttermilk and Cajun spices, fried golden brown and served with Captain’s chipotle remoulade.',
     icon: 'Flame',
+    image: '/images/oysters-bites.jpg',
     popular: false,
   },
   {
@@ -168,6 +186,7 @@
     subType: 'Sides',
     description: 'Crispy on the outside, fluffy and sweet on the inside, infused with sweet corn kernels and served with honey butter.',
     icon: 'Sparkles',
+    image: '/images/oysters-bites.jpg',
     popular: false,
   },
   {
@@ -177,6 +196,7 @@
     subType: 'Sides',
     description: 'Sweet corn on the cob, tender baby red bliss potatoes, and thick sliced Louisiana smoked andouille sausage simmered in spicy boil broth.',
     icon: 'Flame',
+    image: '/images/crawfish-boil.jpg',
     popular: true,
   },
 ];
