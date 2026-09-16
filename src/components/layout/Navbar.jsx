@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Phone, Menu, X, ChevronRight, Sun, Moon, Flame } from '../common/Icons';
 import { BUSINESS_INFO } from '../../data/businessData';
 
@@ -51,8 +51,8 @@ export default function Navbar({ onOpenWizard, currentPage = 'home', onNavigate,
     <header 
       className={`sticky top-0 z-40 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-obsidian-950/90 backdrop-blur-md border-b border-white/10 shadow-2xl' 
-          : 'bg-transparent border-b border-white/5'
+          ? 'bg-white/90 dark:bg-obsidian-950/90 backdrop-blur-md border-b border-neutral-200 dark:border-white/10 shadow-lg' 
+          : 'bg-transparent border-b border-neutral-200/40 dark:border-white/5'
       }`}
       role="banner"
     >
@@ -69,20 +69,20 @@ export default function Navbar({ onOpenWizard, currentPage = 'home', onNavigate,
             width="44"
             height="44"
             decoding="async"
-            className="h-11 w-11 rounded-full object-cover border border-cajun-500/60 shadow-lg shadow-cajun-500/20 group-hover:scale-105 transition-transform"
+            className="h-11 w-11 rounded-full object-cover border-2 border-cajun-500/80 shadow-md group-hover:scale-105 transition-transform"
           />
           <div className="flex flex-col">
-            <span className="font-heading text-lg sm:text-xl font-black tracking-wider text-white uppercase leading-tight">
+            <span className="font-heading text-lg sm:text-xl font-black tracking-wider text-neutral-900 dark:text-white uppercase leading-tight">
               Captain Paul's
             </span>
-            <span className="text-[10px] sm:text-xs tracking-widest uppercase text-cajun-400 font-extrabold">
+            <span className="text-[10px] sm:text-xs tracking-widest uppercase text-cajun-600 dark:text-cajun-400 font-extrabold">
               Cajun Seafood & Boils
             </span>
           </div>
         </button>
 
         {/* Center Nav Links */}
-        <nav className="hidden md:flex items-center space-x-1 lg:space-x-2 bg-obsidian-800/80 px-4 py-2 rounded-full border border-white/10 backdrop-blur-sm shadow-inner" aria-label="Main Navigation">
+        <nav className="hidden md:flex items-center space-x-1 lg:space-x-2 bg-neutral-100 dark:bg-obsidian-800/80 px-4 py-2 rounded-full border border-neutral-200 dark:border-white/10 backdrop-blur-sm shadow-inner" aria-label="Main Navigation">
           {navLinks.map((link) => {
             const isActive = link.target === 'services' && currentPage === 'services';
             return (
@@ -91,8 +91,8 @@ export default function Navbar({ onOpenWizard, currentPage = 'home', onNavigate,
                 onClick={(e) => handleNavClick(e, link.target)}
                 className={`px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
                   isActive 
-                    ? 'text-white bg-cajun-600/30 border border-cajun-500/50' 
-                    : 'text-neutral-300 hover:text-white hover:bg-white/5'
+                    ? 'text-white bg-cajun-600 dark:bg-cajun-600/40 border border-cajun-500/60 shadow-sm' 
+                    : 'text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200/70 dark:hover:bg-white/5'
                 }`}
               >
                 {link.name}
@@ -101,13 +101,23 @@ export default function Navbar({ onOpenWizard, currentPage = 'home', onNavigate,
           })}
         </nav>
 
-        {/* Right CTA */}
-        <div className="hidden sm:flex items-center space-x-4">
+        {/* Right CTA + Theme Toggle */}
+        <div className="hidden sm:flex items-center space-x-3 lg:space-x-4">
+          {/* Light / Dark Mode Toggle */}
+          <button
+            onClick={onToggleDarkMode}
+            className="p-2.5 rounded-full bg-neutral-100 dark:bg-obsidian-800 border border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-amber-400 hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-sm"
+            title={darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+            aria-label={darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          >
+            {darkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-neutral-700" />}
+          </button>
+
           <a
             href={`tel:${BUSINESS_INFO.phone.replace(/[^0-9]/g, '')}`}
-            className="hidden lg:flex items-center space-x-2 text-xs font-bold text-neutral-300 hover:text-cajun-400 transition"
+            className="hidden lg:flex items-center space-x-2 text-xs font-bold text-neutral-700 dark:text-neutral-300 hover:text-cajun-600 dark:hover:text-cajun-400 transition"
           >
-            <Phone className="w-3.5 h-3.5 text-cajun-500" />
+            <Phone className="w-3.5 h-3.5 text-cajun-600 dark:text-cajun-500" />
             <span>{BUSINESS_INFO.phone}</span>
           </a>
 
@@ -121,11 +131,18 @@ export default function Navbar({ onOpenWizard, currentPage = 'home', onNavigate,
           </button>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button + Mobile Theme Toggle */}
         <div className="flex items-center space-x-2 md:hidden">
           <button
+            onClick={onToggleDarkMode}
+            className="p-2.5 rounded-2xl bg-neutral-100 dark:bg-obsidian-800 border border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-amber-400 transition cursor-pointer"
+            aria-label="Toggle theme"
+          >
+            {darkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-neutral-700" />}
+          </button>
+          <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2.5 rounded-2xl bg-obsidian-800 border border-white/10 text-neutral-200 hover:text-white transition cursor-pointer"
+            className="p-2.5 rounded-2xl bg-neutral-100 dark:bg-obsidian-800 border border-neutral-200 dark:border-white/10 text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white transition cursor-pointer"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -135,24 +152,24 @@ export default function Navbar({ onOpenWizard, currentPage = 'home', onNavigate,
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-obsidian-900 border-b border-white/10 px-4 py-6 space-y-4 shadow-2xl">
+        <div className="md:hidden bg-white dark:bg-obsidian-900 border-b border-neutral-200 dark:border-white/10 px-4 py-6 space-y-4 shadow-2xl transition-colors">
           <nav className="flex flex-col space-y-2">
             {navLinks.map((link) => (
               <button
                 key={link.name}
                 onClick={(e) => handleNavClick(e, link.target)}
-                className="text-left py-2.5 px-3 rounded-xl text-sm font-bold text-neutral-200 hover:bg-obsidian-800 hover:text-cajun-400 transition"
+                className="text-left py-2.5 px-3 rounded-xl text-sm font-bold text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-obsidian-800 hover:text-cajun-600 dark:hover:text-cajun-400 transition"
               >
                 {link.name}
               </button>
             ))}
           </nav>
-          <div className="pt-4 border-t border-white/10 flex flex-col space-y-3">
+          <div className="pt-4 border-t border-neutral-200 dark:border-white/10 flex flex-col space-y-3">
             <a
               href={`tel:${BUSINESS_INFO.phone.replace(/[^0-9]/g, '')}`}
-              className="py-3 px-4 rounded-full bg-obsidian-800 text-center font-bold text-neutral-200 flex items-center justify-center space-x-2 text-sm border border-white/10"
+              className="py-3 px-4 rounded-full bg-neutral-100 dark:bg-obsidian-800 text-center font-bold text-neutral-800 dark:text-neutral-200 flex items-center justify-center space-x-2 text-sm border border-neutral-200 dark:border-white/10"
             >
-              <Phone className="w-4 h-4 text-cajun-500" />
+              <Phone className="w-4 h-4 text-cajun-600 dark:text-cajun-500" />
               <span>Call: {BUSINESS_INFO.phone}</span>
             </a>
             <button

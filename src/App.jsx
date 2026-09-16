@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/layout/Navbar';
 import Hero from './components/home/Hero';
 import FeatureShowcase from './components/home/FeatureShowcase';
@@ -27,8 +27,32 @@ export default function App() {
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
   const [adminUser, setAdminUser] = useState(null);
 
-  // Dark Mode default true
-  const [darkMode, setDarkMode] = useState(true);
+  // Dark Mode with persistence
+  const [darkMode, setDarkMode] = useState(() => {
+    try {
+      const saved = localStorage.getItem('theme_mode');
+      if (saved !== null) return saved === 'dark';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    } catch {
+      return true;
+    }
+  });
+
+  useEffect(() => {
+    try {
+      if (darkMode) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme_mode', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme_mode', 'light');
+      }
+    } catch (e) {
+      console.warn('Theme toggle error:', e);
+    }
+  }, [darkMode]);
+
+  const toggleDarkMode = () => setDarkMode(prev => !prev);
 
   // Check stored auth token on mount
   useEffect(() => {
@@ -114,14 +138,14 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-obsidian-950 text-white flex flex-col font-sans selection:bg-cajun-500 selection:text-white">
+    <div className="min-h-screen bg-neutral-50 dark:bg-[#050507] text-neutral-900 dark:text-neutral-100 flex flex-col font-sans selection:bg-cajun-500 selection:text-white transition-colors duration-300">
       {/* Global Navbar */}
       <Navbar 
         onOpenWizard={() => handleOpenWizard()} 
         currentPage={currentPage}
         onNavigate={handleNavigate}
         darkMode={darkMode}
-        onToggleDarkMode={() => {}}
+        onToggleDarkMode={toggleDarkMode}
       />
 
       {/* Main View */}
@@ -163,19 +187,18 @@ export default function App() {
       />
 
       {/* Sticky Mobile Bottom Bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-30 sm:hidden bg-obsidian-950/95 border-t border-white/10 backdrop-blur-md p-2.5 flex items-center gap-2.5 shadow-2xl">
+      <div className="fixed bottom-0 left-0 right-0 z-30 sm:hidden bg-white/95 dark:bg-obsidian-950/95 border-t border-neutral-200 dark:border-white/10 backdrop-blur-md p-2.5 flex items-center gap-2.5 shadow-2xl transition-colors">
         <a
           href={`tel:${BUSINESS_INFO.phone.replace(/[^0-9]/g, '')}`}
-          className="flex-1 py-3 px-3.5 rounded-full bg-obsidian-800 text-white font-extrabold text-xs flex items-center justify-center space-x-1.5 border border-white/10 active:scale-95 transition"
+          className="flex-1 py-3 px-3.5 rounded-full bg-neutral-100 dark:bg-obsidian-800 text-neutral-800 dark:text-white font-extrabold text-xs flex items-center justify-center space-x-1.5 border border-neutral-200 dark:border-white/10 active:scale-95 transition"
         >
-          <Phone className="w-3.5 h-3.5 text-cajun-400" />
+          <Phone className="w-3.5 h-3.5 text-cajun-600 dark:text-cajun-400" />
           <span>Call Us</span>
         </a>
         <button
           onClick={() => handleOpenWizard()}
-          className="flex-1 py-3 px-3.5 rounded-full bg-gradient-to-r from-cajun-500 to-cajun-600 text-white font-black text-xs flex items-center justify-center space-x-1.5 shadow-lg shadow-cajun-500/30 active:scale-95 transition"
+          className="flex-1 py-3 px-3.5 rounded-full bg-gradient-to-r from-cajun-500 to-cajun-600 hover:from-cajun-600 hover:to-orange-700 text-white font-black text-xs flex items-center justify-center space-x-1.5 shadow-lg shadow-cajun-500/30 active:scale-95 transition"
         >
-          <Flame className="w-3.5 h-3.5 text-amber-300" />
           <span>Order Feast</span>
         </button>
       </div>

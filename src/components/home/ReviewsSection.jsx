@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Star, Flame } from '../common/Icons';
 import { BUSINESS_INFO } from '../../data/businessData';
 
@@ -8,11 +8,11 @@ export default function ReviewsSection({ onOpenWizard }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-red-100 dark:bg-red-950/60 text-red-700 dark:text-red-400 font-semibold text-xs sm:text-sm uppercase tracking-wider mb-3">
-            <Flame className="w-4 h-4" />
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cajun-100 dark:bg-cajun-950/60 text-cajun-800 dark:text-cajun-300 font-semibold text-xs sm:text-sm uppercase tracking-wider mb-3 transition-colors">
+            <span className="w-2 h-2 rounded-full bg-cajun-500" />
             <span>Customer Love & Social Proof</span>
           </div>
-          <h2 id="reviews-heading" className="text-3xl sm:text-5xl font-black font-heading text-neutral-900 dark:text-white tracking-tight">
+          <h2 id="reviews-heading" className="text-3xl sm:text-5xl font-black font-heading text-neutral-900 dark:text-white tracking-tight transition-colors">
             Loved Across Corpus Christi & Coastal Texas
           </h2>
           <div className="flex items-center justify-center space-x-2.5 mt-4">

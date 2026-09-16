@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { SERVICES } from '../../data/servicesData';
 import { ArrowRight, LayoutGrid, Flame, Sparkles } from '../common/Icons';
 
@@ -17,14 +17,14 @@ export default function ServicesSection({ onOpenWizard, onViewAllServices }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-red-100 dark:bg-red-950/60 text-red-700 dark:text-red-400 font-semibold text-xs sm:text-sm uppercase tracking-wider mb-3">
-            <Flame className="w-4 h-4" />
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cajun-100 dark:bg-cajun-950/60 text-cajun-800 dark:text-cajun-300 font-semibold text-xs sm:text-sm uppercase tracking-wider mb-3 transition-colors">
+            <span className="w-2 h-2 rounded-full bg-cajun-500" />
             <span>Signature Specialties</span>
           </div>
-          <h2 id="services-heading" className="text-3xl sm:text-5xl lg:text-6xl font-black font-heading text-neutral-900 dark:text-white tracking-tight">
+          <h2 id="services-heading" className="text-3xl sm:text-5xl lg:text-6xl font-black font-heading text-neutral-900 dark:text-white tracking-tight transition-colors">
             Bayou Boils & Gulf Coast Favorites
           </h2>
-          <p className="text-neutral-600 dark:text-neutral-300 mt-4 text-base sm:text-xl leading-relaxed">
+          <p className="text-neutral-600 dark:text-neutral-400 mt-4 text-base sm:text-xl leading-relaxed transition-colors">
             Dine-in at our boil tables or pre-order hot takeout feasts prepared with our signature garlic butter and secret 14-spice Cajun blend.
           </p>
         </div>

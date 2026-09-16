@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Quote, Flame, Sparkles } from '../common/Icons';
 import { BUSINESS_INFO } from '../../data/businessData';
 
@@ -21,28 +21,27 @@ export default function AboutSection({ onOpenWizard }) {
               />
             </div>
             {/* Floating stat badge */}
-            <div className="absolute -bottom-6 right-4 sm:right-8 bg-neutral-900 text-white rounded-2xl card-thick border-2 border-red-600/80 px-6 py-4 transition-colors">
+            <div className="absolute -bottom-6 right-4 sm:right-8 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white rounded-2xl card-thick border-2 border-cajun-500/80 px-6 py-4 transition-all duration-300 shadow-xl hover:-translate-y-1">
               <div className="flex items-center space-x-2">
-                <Flame className="w-5 h-5 text-amber-400" />
-                <span className="text-2xl sm:text-3xl font-black font-heading text-amber-400">100%</span>
+                <span className="text-2xl sm:text-3xl font-black font-heading text-cajun-600 dark:text-amber-400">100%</span>
               </div>
-              <div className="text-xs sm:text-sm text-neutral-200 font-bold">Gulf Catches & Bayou Flavors</div>
+              <div className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-200 font-bold">Gulf Catches & Bayou Flavors</div>
             </div>
           </div>
 
-          {/* Right: Text with Thick & Alive aesthetic */}
+          {/* Right: Text with Human editorial aesthetic */}
           <div className="space-y-6 sm:space-y-7">
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-red-100 dark:bg-red-950/60 text-red-700 dark:text-red-400 font-semibold text-xs sm:text-sm uppercase tracking-wider">
-              <Sparkles className="w-4 h-4" />
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cajun-100 dark:bg-cajun-950/60 text-cajun-800 dark:text-cajun-300 font-semibold text-xs sm:text-sm uppercase tracking-wider transition-colors">
+              <span className="w-2 h-2 rounded-full bg-cajun-500" />
               <span>Our Story & Boil Heritage</span>
             </div>
 
-            <h2 id="about-heading" className="text-3xl sm:text-4xl lg:text-5xl font-black font-heading text-neutral-900 dark:text-white tracking-tight leading-tight">
+            <h2 id="about-heading" className="text-3xl sm:text-4xl lg:text-5xl font-black font-heading text-neutral-900 dark:text-white tracking-tight leading-tight transition-colors">
               Bayou Traditions Meet the Texas Coastal Bend
             </h2>
 
             {/* Owner Quote */}
-            <div className="border-l-4 border-red-600 dark:border-red-500 pl-5 sm:pl-6 py-2 bg-neutral-50 dark:bg-neutral-900/60 rounded-r-2xl border-y border-r border-neutral-200/60 dark:border-neutral-800/60 p-4">
+            <div className="border-l-4 border-cajun-600 dark:border-cajun-500 pl-5 sm:pl-6 py-2 bg-neutral-100 dark:bg-neutral-900/60 rounded-r-2xl border-y border-r border-neutral-200/60 dark:border-neutral-800/60 p-4 transition-colors">
               <Quote className="w-6 h-6 text-red-500 dark:text-red-400 mb-2" aria-hidden="true" />
               <p className="text-neutral-700 dark:text-neutral-200 text-base sm:text-lg italic leading-relaxed font-medium">
                 "{BUSINESS_INFO.owner.quote}"

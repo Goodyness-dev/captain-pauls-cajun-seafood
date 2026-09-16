@@ -1,87 +1,126 @@
-﻿@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
+    color-scheme: light;
+  }
+
+  :root.dark {
     color-scheme: dark;
-    background-color: #050507 !important;
   }
   
   html {
-    background-color: #050507 !important;
-    color: #ffffff !important;
+    @apply transition-colors duration-300;
   }
 
   body {
-    background-color: #050507 !important;
-    color: #ffffff !important;
-    @apply antialiased overflow-x-hidden transition-colors duration-200;
+    @apply antialiased overflow-x-hidden transition-colors duration-300 bg-neutral-50 text-neutral-900 dark:bg-[#050507] dark:text-neutral-100;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
-  /* Clean dark scrollbar */
+  /* Clean responsive scrollbar */
   ::-webkit-scrollbar {
-    width: 7px;
+    width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #050507;
+    background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: #22222b;
-    border-radius: 4px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #ea580c;
+    @apply bg-neutral-300 dark:bg-neutral-800 rounded-full hover:bg-cajun-500 transition-colors;
   }
 }
 
 @layer utilities {
-  /* Tactile Dark Card Shadows & Subtle Hairline Outlines */
+  /* Tactile Responsive Card Shadows */
   .card-thick {
-    box-shadow: 0 16px 45px -10px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  }
+  .dark .card-thick {
+    box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.08);
   }
 
   .card-thick-hover {
-    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 16px 45px -10px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.08);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  }
+  .dark .card-thick-hover {
+    box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.08);
   }
 
   .card-thick-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 24px 50px -10px rgba(234, 88, 12, 0.25), 0 0 0 2px rgba(249, 115, 22, 0.45);
+    transform: translateY(-6px);
+    box-shadow: 0 24px 50px -12px rgba(234, 88, 12, 0.25), 0 0 0 2px rgba(249, 115, 22, 0.45);
   }
 
-  /* Ambient Cajun Skillet Glow (Template Visual Halo) */
+  /* Ambient Cajun Skillet Glow (Halo with gentle pulse) */
   .cajun-halo {
     position: relative;
   }
   .cajun-halo::before {
     content: '';
     position: absolute;
-    inset: -15%;
+    inset: -12%;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(249, 115, 22, 0.32) 0%, rgba(249, 115, 22, 0.08) 55%, transparent 75%);
+    background: radial-gradient(circle, rgba(249, 115, 22, 0.3) 0%, rgba(249, 115, 22, 0.08) 55%, transparent 75%);
     z-index: 0;
     pointer-events: none;
-    filter: blur(32px);
+    filter: blur(28px);
+    animation: gentle-glow 6s ease-in-out infinite alternate;
   }
 
   .cajun-halo-lg::before {
     content: '';
     position: absolute;
-    inset: -25%;
+    inset: -20%;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(234, 88, 12, 0.38) 0%, rgba(249, 115, 22, 0.1) 60%, transparent 80%);
+    background: radial-gradient(circle, rgba(234, 88, 12, 0.35) 0%, rgba(249, 115, 22, 0.1) 60%, transparent 80%);
     z-index: 0;
     pointer-events: none;
-    filter: blur(44px);
+    filter: blur(40px);
+    animation: gentle-glow 5s ease-in-out infinite alternate;
   }
 
-  /* Subtle slate stone texture */
+  /* Fluid Float Animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes gentle-glow {
+    0% {
+      opacity: 0.7;
+      transform: scale(0.97);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-slow {
+    animation: float 9s ease-in-out infinite;
+  }
+
+  /* Subtle background pattern */
   .bg-stone-texture {
     background-image: 
-      radial-gradient(circle at 50% 20%, rgba(249, 115, 22, 0.04) 0%, transparent 60%),
+      radial-gradient(circle at 50% 20%, rgba(249, 115, 22, 0.05) 0%, transparent 60%),
+      radial-gradient(circle, rgba(120, 120, 120, 0.05) 1px, transparent 1px);
+    background-size: 100% 100%, 32px 32px;
+  }
+  .dark .bg-stone-texture {
+    background-image: 
+      radial-gradient(circle at 50% 20%, rgba(249, 115, 22, 0.07) 0%, transparent 60%),
       radial-gradient(circle, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     background-size: 100% 100%, 32px 32px;
   }

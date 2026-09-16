@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   X, 
   ChevronLeft, 
@@ -189,8 +189,8 @@ export default function QuoteWizardModal({ isOpen, onClose, initialCategory = nu
         {/* Modal Header */}
         <div className="flex items-center justify-between px-6 sm:px-8 py-5 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/60">
           <div className="flex items-center space-x-3">
-            <div className="p-2 rounded-xl bg-red-600 text-white">
-              <Flame className="w-5 h-5 text-amber-300" />
+            <div className="w-10 h-10 rounded-xl bg-cajun-600 text-white font-heading font-black flex items-center justify-center text-sm shadow-md">
+              CP
             </div>
             <div>
               <h2 className="text-lg sm:text-xl font-extrabold text-neutral-900 dark:text-white">
@@ -554,18 +554,15 @@ export default function QuoteWizardModal({ isOpen, onClose, initialCategory = nu
                     type="button"
                     onClick={handleSubmit}
                     disabled={isSubmitting}
-                    className="px-7 py-3 rounded-xl bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white font-black text-sm transition flex items-center space-x-2 cursor-pointer shadow-lg disabled:opacity-50"
+                    className="px-7 py-3 rounded-xl bg-gradient-to-r from-cajun-500 to-cajun-600 hover:from-cajun-600 hover:to-orange-700 text-white font-black text-sm transition-all duration-300 flex items-center space-x-2 cursor-pointer shadow-lg disabled:opacity-50 hover:-translate-y-0.5 active:scale-95"
                   >
                     {isSubmitting ? (
                       <>
-                        <Loader2 className="w-4 h-4" />
+                        <Loader2 className="w-4 h-4 animate-spin" />
                         <span>Confirming Feast...</span>
                       </>
                     ) : (
-                      <>
-                        <Flame className="w-4 h-4 text-amber-300" />
-                        <span>Confirm Boil Feast</span>
-                      </>
+                      <span>Confirm Boil Feast</span>
                     )}
                   </button>
                 )}

@@ -67,14 +67,14 @@ export default function AllServicesPage({ onOpenWizard, onBackToHome }) {
 
         {/* Page Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-red-100 dark:bg-red-950/60 text-red-700 dark:text-red-400 font-semibold text-xs sm:text-sm uppercase tracking-wider mb-3">
-            <Flame className="w-4 h-4" />
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cajun-100 dark:bg-cajun-950/60 text-cajun-800 dark:text-cajun-300 font-semibold text-xs sm:text-sm uppercase tracking-wider mb-3 transition-colors">
+            <span className="w-2 h-2 rounded-full bg-cajun-500" />
             <span>Full Restaurant Catalog</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black font-heading text-neutral-900 dark:text-white tracking-tight">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black font-heading text-neutral-900 dark:text-white tracking-tight transition-colors">
             Captain Paul's Full Cajun Menu
           </h1>
-          <p className="text-neutral-600 dark:text-neutral-300 mt-4 text-base sm:text-xl leading-relaxed">
+          <p className="text-neutral-600 dark:text-neutral-400 mt-4 text-base sm:text-xl leading-relaxed transition-colors">
             Authentic Louisiana seafood boils, golden-fried Gulf baskets, rich dark-roux gumbo, and savory bayou sides prepared fresh daily.
           </p>
         </div>
